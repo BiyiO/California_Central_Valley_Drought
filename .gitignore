@@ -1,0 +1,33 @@
+# Python & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Scratch & Temporary Generator Files
+scratch_*.py
+generate_notebook.py
+Untitled.ipynb
+
+# Archives & Large Zips
+*.zip
+*.tar.gz
+*.7z
+
+# ESRI / ArcGIS Pro Locks & Cache
+*.lock
+*.OLADUNNI.*
+.backups/
+ImportLog/
+Index/
+Central_Valley_Project.gdb/
+
+# Redundant Raw Data Backups
+01_Raw_Data/Old data/
+01_Raw_Data/*.zip
+01_Raw_Data/Boundary/*.zip
+
+# OS Specific
+.DS_Store
+Thumbs.db
