@@ -50,9 +50,17 @@ Under California's **Sustainable Groundwater Management Act (SGMA)**, Groundwate
 
 The **Agricultural Drought & Aquifer Vulnerability Index (ADAVI)** standardizes five remote sensing and hydro-geomorphic factor rasters onto a continuous 1–5 vulnerability scale at **100-meter resolution (EPSG:3310 - California Teale Albers)**:
 
-$$\text{ADAVI} = \sum_{i=1}^{5} (w_i \times F_i)$$
 
-$$\text{ADAVI} = 0.30 \times F_{\text{NDWI}} + 0.25 \times F_{\text{LST}} + 0.20 \times F_{\text{NDVI}} + 0.15 \times F_{\text{Slope}} + 0.10 \times F_{\text{Overdraft}}$$
+```text
+ADAVI = \sum_{i=1^{5 (w_i × F_i)
+```
+
+
+
+```text
+ADAVI = 0.30 × F_{NDWI + 0.25 × F_{LST + 0.20 × F_{NDVI + 0.15 × F_{Slope + 0.10 × F_{Overdraft
+```
+
 
 <div align="center">
   <img src="04_Final_Maps/Factor_Correlation_Matrix.png" width="55%" alt="Factor Correlation Matrix" />
@@ -60,13 +68,13 @@ $$\text{ADAVI} = 0.30 \times F_{\text{NDWI}} + 0.25 \times F_{\text{LST}} + 0.20
 
 ### Factor Calibration & Agronomic Rationale:
 
-| Factor | Parameter & Source | Weight ($w_i$) | Agronomic & Hydro-Geomorphic Rationale | 1–5 Reclassification Scale |
+| Factor | Parameter & Source | Weight (`w_i`) | Agronomic & Hydro-Geomorphic Rationale | 1–5 Reclassification Scale |
 | :--- | :--- | :---: | :--- | :--- |
-| **$F_1$** | **Crop Canopy Moisture Deficit (NDWI)** *(Landsat 8/9 NIR/SWIR)* | **30%** | Measures leaf canopy moisture and irrigation stress; desiccation indicates acute water deficit. | **1:** $>0.20$ (Moist)<br>**5:** $\le -0.25$ (Severe Deficit) |
-| **$F_2$** | **Thermal Stress & Evaporative Demand (LST °C)** *(Landsat 8/9 TIRS)* | **25%** | Captures surface heat anomalies and high evapotranspiration demand on non-transpiring canopies. | **1:** $\le 28^\circ\text{C}$<br>**5:** $>44^\circ\text{C}$ (Extreme Heat) |
-| **$F_3$** | **Vegetation Biomass & Crop Health (NDVI)** *(Landsat 8/9 Red/NIR)* | **20%** | Quantifies photosynthetic vigor and distinguishes healthy orchards from fallowed/abandoned fields. | **1:** $>0.60$ (Vigorous)<br>**5:** $\le 0.15$ (Fallowed/Bare) |
-| **$F_4$** | **Alluvial Plain Topographic Slope** *(USGS 3DEP DEM)* | **15%** | Flatter alluvial valley floors contain thick compressible clay layers susceptible to subsidence. | **1:** $>5.0^\circ$ (Upland)<br>**5:** $\le 0.8^\circ$ (Subsidence Core) |
-| **$F_5$** | **Aquifer Overdraft & Soil Compaction Proxy** *(Spatial Filter)* | **10%** | Models contiguous spatial corridors subject to continuous cones of depression. | **1:** $<1.8$<br>**5:** $\ge 4.2$ (Overdraft Core) |
+| **`F_1`** | **Crop Canopy Moisture Deficit (NDWI)** *(Landsat 8/9 NIR/SWIR)* | **30%** | Measures leaf canopy moisture and irrigation stress; desiccation indicates acute water deficit. | **1:** >0.20 (Moist)<br>**5:** ≤ -0.25$ (Severe Deficit) |
+| **`F_2`** | **Thermal Stress & Evaporative Demand (LST °C)** *(Landsat 8/9 TIRS)* | **25%** | Captures surface heat anomalies and high evapotranspiration demand on non-transpiring canopies. | **1:** ≤ 28°C`<br>**5:**`>44°C$ (Extreme Heat) |
+| **`F_3`** | **Vegetation Biomass & Crop Health (NDVI)** *(Landsat 8/9 Red/NIR)* | **20%** | Quantifies photosynthetic vigor and distinguishes healthy orchards from fallowed/abandoned fields. | **1:** >0.60 (Vigorous)<br>**5:** ≤ 0.15$ (Fallowed/Bare) |
+| **`F_4`** | **Alluvial Plain Topographic Slope** *(USGS 3DEP DEM)* | **15%** | Flatter alluvial valley floors contain thick compressible clay layers susceptible to subsidence. | **1:** `>5.0°` (Upland)<br>**5:** ≤ 0.8°$ (Subsidence Core) |
+| **`F_5`** | **Aquifer Overdraft & Soil Compaction Proxy** *(Spatial Filter)* | **10%** | Models contiguous spatial corridors subject to continuous cones of depression. | **1:** <1.8<br>**5:** ≥ 4.2$ (Overdraft Core) |
 
 ---
 
@@ -93,7 +101,7 @@ The pipeline evaluated **7,848,462 acres (31,761.6 km²)** across the three-coun
   <img src="04_Final_Maps/California_Central_Valley_Cartographic_Map.png" width="85%" alt="California Central Valley Cartographic Vulnerability Map" />
 </div>
 
-Contiguous clusters of Class 4 (High) and Class 5 (Extreme) vulnerability ($\ge 50\text{ ha}$) were polygonized into:
+Contiguous clusters of Class 4 (High) and Class 5 (Extreme) vulnerability (≥ 50 ha$) were polygonized into:
 ```
 03_Drought_Aquifer_Model/Priority_Groundwater_Mitigation_Zones.geojson
 ```
