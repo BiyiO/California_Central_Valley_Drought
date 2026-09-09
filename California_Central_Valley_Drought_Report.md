@@ -27,17 +27,17 @@ To provide spatial clarity for **Groundwater Sustainability Agencies (GSAs)**, r
 
 The ADAVI model combines multi-spectral canopy moisture, thermal infrared land surface temperatures, vegetation vigor, alluvial plain micro-topography, and compaction modeling into a standardized multi-criteria weighted overlay framework:
 
-$$\text{ADAVI} = \sum_{i=1}^{5} (w_i \times F_i)$$
+$`ADAVI = sum_{i=1}^{5} (w_i × F_i)`$
 
-$$\text{ADAVI} = 0.30 \times F_{\text{NDWI}} + 0.25 \times F_{\text{LST}} + 0.20 \times F_{\text{NDVI}} + 0.15 \times F_{\text{Slope}} + 0.10 \times F_{\text{Overdraft}}$$
+$`ADAVI = 0.30 × F_{NDWI} + 0.25 × F_{LST} + 0.20 × F_{NDVI} + 0.15 × F_{Slope} + 0.10 × F_{Overdraft}`$
 
-| Factor | Parameter & Source | Weight ($w_i$) | Agronomic & Hydro-Geomorphic Rationale | 1–5 Reclassification Thresholds |
+| Factor | Parameter & Source | Weight (`w_i`) | Agronomic & Hydro-Geomorphic Rationale | 1–5 Reclassification Thresholds |
 | :--- | :--- | :---: | :--- | :--- |
-| **$F_1$** | **Crop Canopy Moisture (NDWI)**<br>*(Landsat 8/9 NIR/SWIR)* | **30%** | Measures water content in the crop canopy. Canopy desiccation directly signals irrigation shortfalls. | **1:** $>0.20$<br>**2:** $0.05 \text{ to } 0.20$<br>**3:** $-0.10 \text{ to } 0.05$<br>**4:** $-0.25 \text{ to } -0.10$<br>**5:** $\le -0.25$ |
-| **$F_2$** | **Thermal Stress (LST °C)**<br>*(Landsat 8/9 TIRS)* | **25%** | Quantifies extreme evaporative demand and surface heating. Stressed, non-transpiring crops and fallowed soils reach peak thermal temperatures. | **1:** $\le 28^\circ\text{C}$<br>**2:** $28 \text{ to } 34^\circ\text{C}$<br>**3:** $34 \text{ to } 39^\circ\text{C}$<br>**4:** $39 \text{ to } 44^\circ\text{C}$<br>**5:** $>44^\circ\text{C}$ |
-| **$F_3$** | **Crop Biomass / Vigor (NDVI)**<br>*(Landsat 8/9 Red/NIR)* | **20%** | Distinguishes productive irrigated orchards/row crops from fallowed, abandoned, or drought-stunted fields. | **1:** $>0.60$<br>**2:** $0.45 \text{ to } 0.60$<br>**3:** $0.30 \text{ to } 0.45$<br>**4:** $0.15 \text{ to } 0.30$<br>**5:** $\le 0.15$ |
-| **$F_4$** | **Topographic Slope**<br>*(USGS 3DEP DEM)* | **15%** | Ultra-flat alluvial valley floors feature deep clay-silt layers (Corcoran Clay) prone to pore-collapse and compaction under groundwater pumping. | **1:** $>5.0^\circ$<br>**2:** $3.0 \text{ to } 5.0^\circ$<br>**3:** $1.8 \text{ to } 3.0^\circ$<br>**4:** $0.8 \text{ to } 1.8^\circ$<br>**5:** $\le 0.8^\circ$ |
-| **$F_5$** | **Aquifer Overdraft Proxy**<br>*(Spatial Filtering & Geomorphology)* | **10%** | Delineates spatial corridors susceptible to inelastic aquifer compaction and continuous extraction cones of depression. | **1:** $<1.8$<br>**2:** $1.8 \text{ to } 2.6$<br>**3:** $2.6 \text{ to } 3.4$<br>**4:** $3.4 \text{ to } 4.2$<br>**5:** $\ge 4.2$ |
+| **`F_1`** | **Crop Canopy Moisture (NDWI)**<br>*(Landsat 8/9 NIR/SWIR)* | **30%** | Measures water content in the crop canopy. Canopy desiccation directly signals irrigation shortfalls. | **1:** >0.20<br>**2:** `0.05  to  0.20`<br>**3:** `-0.10  to  0.05`<br>**4:** `-0.25  to  -0.10`<br>**5:** `≤ -0.25` |
+| **`F_2`** | **Thermal Stress (LST °C)**<br>*(Landsat 8/9 TIRS)* | **25%** | Quantifies extreme evaporative demand and surface heating. Stressed, non-transpiring crops and fallowed soils reach peak thermal temperatures. | **1:** `≤ 28^circC`<br>**2:** `28  to  34^circC`<br>**3:** `34  to  39^circC`<br>**4:** `39  to  44^circC`<br>**5:** `>44^circC` |
+| **`F_3`** | **Crop Biomass / Vigor (NDVI)**<br>*(Landsat 8/9 Red/NIR)* | **20%** | Distinguishes productive irrigated orchards/row crops from fallowed, abandoned, or drought-stunted fields. | **1:** >0.60<br>**2:** `0.45  to  0.60`<br>**3:** `0.30  to  0.45`<br>**4:** `0.15  to  0.30`<br>**5:** `≤ 0.15` |
+| **`F_4`** | **Topographic Slope**<br>*(USGS 3DEP DEM)* | **15%** | Ultra-flat alluvial valley floors feature deep clay-silt layers (Corcoran Clay) prone to pore-collapse and compaction under groundwater pumping. | **1:** `>5.0^circ`<br>**2:** `3.0  to  5.0^circ`<br>**3:** `1.8  to  3.0^circ`<br>**4:** `0.8  to  1.8^circ`<br>**5:** `≤ 0.8^circ` |
+| **`F_5`** | **Aquifer Overdraft Proxy**<br>*(Spatial Filtering & Geomorphology)* | **10%** | Delineates spatial corridors susceptible to inelastic aquifer compaction and continuous extraction cones of depression. | **1:** <1.8<br>**2:** `1.8  to  2.6`<br>**3:** `2.6  to  3.4`<br>**4:** `3.4  to  4.2`<br>**5:** `≥ 4.2` |
 
 ---
 
@@ -61,7 +61,7 @@ The zonal statistics engine evaluated **Fresno**, **Tulare**, and **Kings** Coun
 
 ## 4. Priority Groundwater Mitigation & Recharge Suitability
 
-Using contiguous spatial clustering of Class 4 and 5 zones ($\ge 50$ hectares), **309 critical mitigation zones** were identified across **2,378,812 acres**:
+Using contiguous spatial clustering of Class 4 and 5 zones (`≥ 50` hectares), **309 critical mitigation zones** were identified across **2,378,812 acres**:
 
 ```
 [03_Drought_Aquifer_Model/Priority_Groundwater_Mitigation_Zones.geojson]
